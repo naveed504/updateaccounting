@@ -114,7 +114,7 @@
                           {{ method_field('DELETE') }}
                           <button class="dropdown-item">Delete</button>
                           </form>
-                          <a class="dropdown-item" href="{{route('purchasedetail', $items->id)}}">View Company Detail</a>
+                          <a class="dropdown-item" href="{{route('purchasedetail',['id'=> $items->id ,'dealer_id'=> $items->dealers->id ])}}">View Company Detail</a>
 
                         </div>
                       </div>

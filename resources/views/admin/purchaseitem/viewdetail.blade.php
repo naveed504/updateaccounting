@@ -1,4 +1,75 @@
 @extends('admin.master')
+<style>
+<style>
+header
+{
+	font-family: 'Lobster', cursive;
+	text-align: center;
+	font-size: 25px;	
+}
+
+#info
+{
+	font-size: 18px;
+	color: #555;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+a{
+	color: #074E8C;
+}
+
+.scrollbar
+{
+	margin-left:3px;
+	float: left;
+	height: 137px;
+	width: 235;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 2px;
+}
+
+.force-overflow
+{
+	min-height: 450px;
+}
+
+#wrapper
+{
+	text-align: center;
+	width: 500px;
+	margin: auto;
+}
+
+#style-7::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#style-7::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-7::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, rgb(122,153,217)),
+									   color-stop(0.72, rgb(73,125,189)),
+									   color-stop(0.86, rgb(28,58,148)));
+}
+
+
+</style>
+</style>
 @section('bodyheader')
 <div class="header bg-primary pb-6">
       <div class="container-fluid">
@@ -78,11 +149,21 @@
             <div class="col-xl-3 col-md-6">
               <div class="card card-stats">
                 <!-- Card body -->
+                <div id="wrapper">
+    <div class="scrollbar" id="style-7">
+      <div class="force-overflow">
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Total No Of Items</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Pay Amount</h5>
+                      <span class="h6 font-weight-bold mb-0">
+                      
+                      @foreach($pay_amount_list as $paylist)
+                      {{ date('M d-y',strtotime($paylist->created_at))}} &nbsp; <b>{{ seprateCommaValue($paylist->pay) }}</b>
+                      <br>
+                       @endforeach
+                      
+                      </span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -91,10 +172,16 @@
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
+                   
                   </p>
                 </div>
+</div>
+    </div>
+</div>
+
+
+
+
               </div>
             </div>
           </div>
@@ -219,13 +306,13 @@
                         </a>
                         
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" >
-                        <!-- <a class="dropdown-item" href="{{route('purchaseitem.edit' , $items->id)}}">Edit</a>
+                        <a class="dropdown-item" href="{{route('purchaseitem.edit' , $items->id)}}">Edit</a>
                           <form action="{{route('purchaseitem.destroy', $items->id)}}" method="post">
                           @csrf
                           {{ method_field('DELETE') }}
                           <button class="dropdown-item">Delete</button>
-                          </form> -->
-                          <a class="dropdown-item" href="{{route('purchasedetail', $items->id)}}">View Company Detail</a>
+                          </form>
+                          <a class="dropdown-item" href="{{route('purchasedetail', ['id'=> $items->id , 'dealer_id'=> $items->maindealer_id])}}">View Company Detail</a>
 
                         </div>
                       </div>

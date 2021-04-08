@@ -59,6 +59,9 @@
                 </thead>
                 <tbody class="list">
                 @foreach($resultDealer as $dealer)
+              @php 
+              $dealer_id= $dealer->id
+              @endphp
                   <tr>
                     <th scope="row">
                       <div class="media align-items-center">
@@ -98,8 +101,7 @@
                           {{ method_field('DELETE') }}
                           <button class="dropdown-item">Delete</button>
                           </form>
-                        <!-- <input type="submit" value="Pay Payment" id="{{ $dealer->id }}" class="dropdown-item get_remaining"> -->
-                           <a class="dropdown-item get_remaining" id="{{ $dealer->id }}" href="javascript:void(0)" value="{{ $dealer->id }}" >Pay Payment</a>
+                           <a class="dropdown-item get_remaining" id="{{ $dealer->id }}" data-maindealer="{{ $dealer_id  }}" href="javascript:void(0)" value="{{ $dealer->id }}" >Pay Payment</a>
                         </div>
                         
                       </div>
@@ -154,9 +156,10 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form action="savebill" method="post">
+        <form action="savebill" method="post" id="myForm">
+   @csrf
       <div class="row">
-
+      <input type="hidden" name="maindealer_id" id="maindealer_id">
                             <div class="col-lg-4">
                           <div class="row px-3">
                             <label class="mb-1"><h6 class="mb-0 text-sm">Total Remaining Amount</h6></label>
@@ -185,7 +188,18 @@
                           </div>
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary" id="savebill">Save Quotation</button>
+                      <div class="row">
+                      <div class="col-md-12">
+                      <div class="row px-3">
+                            <label class="mb-1"><h6 class="mb-0 text-sm">Description</h6></label>
+                           
+                           <textarea name="detail" id="detail" class="mb-0 text-sm" ></textarea>
+                           
+                          </div>
+                      </div>
+                      </div>
+                      <br>
+                      <button type="submit" class="btn btn-primary">Save Quotation</button>
                     </form>
       </div>
 
@@ -204,16 +218,20 @@ $(document).ready(function(){
 
 $('.get_remaining').click(function(){
   var id= $(this).attr('id');
+  var dealer_id= $(this).attr('data-maindealer');
+ 
   $.ajax({
     type: 'get',
-    data: {id:id},
+    data: {id:id, dealer_id:dealer_id},
     datatype: 'application/json',
     url : "{{URL('dealer_account')}}",
     success:function(data){
-
-     $('#myModal').modal('show');
-     $('#myModal').find('.modal-title').text('Manage Dealer Account');
-    $('input[name=prevremaining]').val(data);
+      // console.log(data.maindealer[0]['maindealer_id']);
+      // console.log(data.remaining_sum);
+      $('#myModal').modal('show');
+      $('#myModal').find('.modal-title').text('Manage Dealer Account');
+      $('input[name=prevremaining]').val(data.remaining_sum);
+      $('input[name=maindealer_id]').val(data.maindealer[0]['maindealer_id']);
     }
   });
   $('#pay').change(function(){
@@ -233,23 +251,6 @@ function myCalculation()
 });
 
 
-$('#savebill').click(function(){
-      var previous_remaining = $('input[name=prevremaining]');
-      var pay = $('input[name=pay]');
-      var remaining = $('input[name=remaining]');
-      alert(previous_remaining);
-var token = document.querySelectorAll("input[name='_token']")[0].value
-      $.ajax({
-        type: 'post',
-        data: {previous_remaining:previous_remaining , pay:pay ,remaining:remaining, _token:token},
-        datatype: 'application/json',
-        url: "{{URL('savebill')}}",
-        success:function(data){
-          alert("ok");
-        }
-      });
-
-})
 
  
 })

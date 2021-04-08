@@ -49,15 +49,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="adminregister">
+              <a class="nav-link" href="create_jobs">
                 <i class="ni ni-circle-08 text-pink"></i>
-                <span class="nav-link-text">Register</span>
+                <span class="nav-link-text">Jobs</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="examples/upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade</span>
+              <a class="nav-link" href="img-fav-view">
+                <i class="ni ni-planet text-orange"></i>
+                <span class="nav-link-text">Image Favourites</span>
               </a>
             </li>
           </ul>
