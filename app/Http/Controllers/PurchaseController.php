@@ -53,7 +53,7 @@ class PurchaseController extends Controller
            
             $purchasing= new PurchaseItem;
             $request->hasFile('item_photo');
-            $destinationPath = storage_path('app/public/purchaseitems');
+            $destinationPath = public_path('admin/purchaseitems');
             $file = $request->item_photo;
             $fileName = time() . '.'.$file->clientExtension();
             $file->move($destinationPath, $fileName );
@@ -131,7 +131,7 @@ class PurchaseController extends Controller
                $updatepurchaseitem->item_photo = $updatepurchaseitem->item_photo;
             }else{
              $request->hasFile( 'item_photo' );
-             $destinationPath = storage_path( 'app/public/purchaseitems' );
+             $destinationPath = public_path( 'admin/purchaseitems' );
              $file = $request->item_photo;
              $fileName = time() . '.'.$file->clientExtension();
              $file->move($destinationPath, $fileName );

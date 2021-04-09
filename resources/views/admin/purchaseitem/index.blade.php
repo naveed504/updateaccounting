@@ -76,8 +76,8 @@
                    
                     <td>
                       <div class="avatar-group">
-                        <a href="{{asset('storage/purchaseitems/'.$items->item_photo)}}" class="avatar avatar-sm rounded-circle " data-toggle="tooltip" data-original-title="" >
-                          <img alt="Profile" class="img img-responsive" src="{{asset('storage/purchaseitems/'.$items->item_photo)}}" style="height:50px;width:50px;">
+                        <a href="{{asset('admin/purchaseitems/'.$items->item_photo)}}" class="avatar avatar-sm rounded-circle " data-toggle="tooltip" data-original-title="" >
+                          <img alt="Profile" class="img img-responsive" src="{{asset('admin/purchaseitems/'.$items->item_photo)}}" style="height:50px;width:50px;">
                         </a>
                        
                        

@@ -76,8 +76,8 @@
                     </td>
                     <td>
                       <div class="avatar-group">
-                        <a href="#" class="avatar avatar-sm rounded-circle " data-toggle="tooltip" data-original-title="{{$dealer->dealer_name}}" >
-                          <img alt="Profile" class="img img-responsive" src="{{asset('storage/dealers/'.$dealer->dealer_profile)}}" style="height:50px;width:50px;">
+                        <a href="{{asset('admin/dealers/'.$dealer->dealer_profile)}}" class="avatar avatar-sm rounded-circle " data-toggle="tooltip" data-original-title="{{$dealer->dealer_name}}" >
+                          <img alt="Profile" class="img img-responsive" src="{{asset('admin/dealers/'.$dealer->dealer_profile)}}" style="height:50px;width:50px;">
                         </a>
                        
                        

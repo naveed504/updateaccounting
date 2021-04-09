@@ -35,6 +35,7 @@ Route::post('send-contact-from',[PurchaseGeneralControler::class, 'sendMain'])->
 });
 
 Route::get('img-fav-view',[FavouriteImagesController::class,'imgview']);
+Route::post('favimg',[FavouriteImagesController::class,'addtofav']);
 
 Route::get('adminregister', [GeneralController::class, 'adminregister'])->name('adminregister');
 Route::get('adminlogin', [GeneralController::class, 'adminlogin'])->name('adminlogin');

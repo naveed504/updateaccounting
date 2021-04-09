@@ -43,7 +43,7 @@ class MainDealerController extends Controller
             
        $dealer= new MainDealer;
        $request->hasFile( 'dealer_profile' );
-       $destinationPath = storage_path( 'app/public/dealers' );
+       $destinationPath = public_path( 'admin/dealers' );
        $file = $request->dealer_profile;
        $fileName = time() . '.'.$file->clientExtension();
        $file->move($destinationPath, $fileName );
@@ -107,7 +107,7 @@ class MainDealerController extends Controller
           $updateDealer->dealer_profile = $updateDealer->dealer_profile;
        }else{
         $request->hasFile( 'dealer_profile' );
-        $destinationPath = storage_path( 'app/public/dealers' );
+        $destinationPath = public_path( 'admin/dealers' );
         $file = $request->dealer_profile;
         $fileName = time() . '.'.$file->clientExtension();
         $file->move($destinationPath, $fileName );
