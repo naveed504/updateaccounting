@@ -157,8 +157,7 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="hearted-fav-img" class="btn btn-sm btn-neutral">view Favourites</a>
-              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+             
             </div>
           </div>
         </div>
@@ -179,22 +178,16 @@
               @php
               $userid = Auth::user()->id;
               @endphp
-              @foreach($images as $image)
               
-              
+              @foreach($favimages as $fimage)
+              @if($fimage->users->id == $userid )
               <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                 <a href="javascript:void(0)" id="fav{{$image->id}}" class="heart">
-                                 
-                                
-                               
-         <img class="manage_gallry-img"  onclick="addtofav( {{ $image->id}} , {{Auth::user()->id}} )"  src="{{asset('admin/heart.png')}}" alt="heart" ></a>
-              <img class="img-responsive" src="{{asset('admin/fav/'.$image->image)}}"  style="width:100% ;height:150px"  alt="">
+                                 <a href="javascript:void(0)" id="fav{{$fimage->images->id}}" class="heart">
+         <img class="manage_gallry-img"  onclick="unfavimg( {{ $fimage->images->id}} , {{Auth::user()->id }} )"  src="{{asset('admin/heart.png')}}" style="background:red" alt="heart" ></a>
+              <img class="img-responsive" src="{{asset('admin/fav/'.$fimage->images->image)}}"  style="width:100% ;height:150px"  alt="">
        
-
-
-
-  
 </div>
+@endif
               @endforeach
             
                        
@@ -216,21 +209,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script>
-  function addtofav(imgid, userid) {
-    var token = document.querySelectorAll("input[name='_token']")[0].value
-    $.ajax({
-      type: 'post',
-      data: {imgid:imgid , userid:userid , _token:token },
-      datatype: 'application/json',
-      url : '{{url("favimg")}}',
-      success:function(data){
-    
-        document.getElementById('fav'+imgid).innerHTML = '<i class="fa fa-heart-o text-dark" style="background:red" onclick="unfavimg('+imgid+','+userid+')"></i>';
-        
-    }
-    })
-  }
-  function unfavimg(imgid , userid){
+    function unfavimg(imgid , userid){
     var token = document.querySelectorAll("input[name='_token']")[0].value
 
     $.ajax({
@@ -239,7 +218,7 @@
       datatype: 'application/json',
       url : '{{url("unfav")}}',
       success:function(data){
-        document.getElementById('fav'+imgid).innerHTML = '<i class="fa fa-heart-o text-dark" onclick="addtofav('+imgid+','+userid+')"></i>';
+          console.log("ok");
       }
     })
   }

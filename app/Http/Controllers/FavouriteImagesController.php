@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Models\ImageFavourite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class FavouriteImagesController extends Controller
 {
@@ -17,21 +19,27 @@ class FavouriteImagesController extends Controller
     }
    public function addtofav(Request $request)
    {
-       
-       $checkfavrecord = ImageFavourite::where('image_id', $request->imgid)->where('user_id', $request->userid)->first();
-       if($request->imgid  != ($checkfavrecord->image_id ?? '') )
+      
+       $checkfavrecord = ImageFavourite::where('images_id', $request->imgid)->where('users_id', $request->userid)->first();
+       if($request->imgid  != ($checkfavrecord->images_id ?? '') )
        {
            $query = ImageFavourite::create([
-               'user_id' => $request->userid,
-               'image_id' => $request->imgid,
+               'users_id' => $request->userid,
+               'images_id' => $request->imgid,
                // 'ip' => $request->ip
            ]);
        }else{
-           $query =  ImageFavourite::where('image_id',$request->imgid)->where('user_id',$request->userid)->delete();
+           $query =  ImageFavourite::where('images_id',$request->imgid)->where('users_id',$request->userid)->delete();
        }
       
            
        return response()->json($query);
        
+   }
+   public function favouriteViews()
+   {
+    $favimages = ImageFavourite::all();
+
+       return view('favourites.viewfavourites', compact('favimages'));
    }
 }

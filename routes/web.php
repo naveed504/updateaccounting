@@ -6,6 +6,7 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseGeneralControler;
 use App\Http\Controllers\FavouriteImagesController;
+use App\Http\Controllers\EventListenerPOstCon;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,16 @@ Route::get('dealer_account',[PurchaseGeneralControler::class,'dealer_account'])-
 Route::post('savebill',[PurchaseGeneralControler::class, 'savebill'])->name('savebill');
 Route::get('create_jobs',[PurchaseGeneralControler::class, 'createForm'])->name('create_jobs');
 Route::post('send-contact-from',[PurchaseGeneralControler::class, 'sendMain'])->name('send');
+Route::get('eventpost',[EventListenerPOstCon::class, 'index']);
+Route::post('storepost',[EventListenerPOstCon::class, 'store'])->name('storepost');
 
 });
 
 Route::get('img-fav-view',[FavouriteImagesController::class,'imgview']);
 Route::post('favimg',[FavouriteImagesController::class,'addtofav']);
+Route::post('unfav',[FavouriteImagesController::class, 'addtofav']);
+Route::get('hearted-fav-img',[FavouriteImagesController::class, 'favouriteViews']);
+
 
 Route::get('adminregister', [GeneralController::class, 'adminregister'])->name('adminregister');
 Route::get('adminlogin', [GeneralController::class, 'adminlogin'])->name('adminlogin');

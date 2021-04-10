@@ -28,9 +28,10 @@ protected $data;
      */
     public function build()
     {
+      
         // return $this->view('view.name');
         try {
-            $this->from('Accounting@gmail.com' ,'Inaction Photos')
+            $this->from('accounting@gmail.com' ,'New Post Pubished')
                 ->subject('Thank You For Contacting Us')
                 ->view('admin.jobs.template')
                 ->with('data', $this->data);

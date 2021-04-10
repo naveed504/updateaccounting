@@ -70,9 +70,9 @@
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
+            <a class="nav-link" href="eventpost">
                 <i class="ni ni-spaceship"></i>
-                <span class="nav-link-text">Getting started</span>
+                <span class="nav-link-text">Event Listener</span>
               </a>
             </li>
             <li class="nav-item">
@@ -93,12 +93,7 @@
                 <span class="nav-link-text">Plugins</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active active-pro" href="examples/upgrade.html">
-                <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade to PRO</span>
-              </a>
-            </li>
+           
           </ul>
         </div>
       </div>

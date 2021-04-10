@@ -37,7 +37,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Add New Dealer</h3>
+              <h3 class="mb-0">Event Listeners Post</h3>
             </div>
             <!-- Light table -->
         
@@ -49,20 +49,18 @@
                         <div class="card2 card border-0 px-4 py-5">
                         
                     
-                        <form action="{{ route('send')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('storepost')}}" method="post" enctype="multipart/form-data">
      
                           @csrf
                          
                          
                           <div class="row px-3">
-                          <input type="text" name="username" placeholder="Enter Your Name">
+                          <input type="text" name="title" placeholder="Enter Your Name">
                           </div>
-                          <div class="row px-3">
-                          <input type="text" name="email" placeholder="Enter Your Email">
-                          </div>
+                        
                          
                           <div class="row px-3">
-                           <textarea name="message"  class="mb-0 text-sm"   placeholder="Enter Your Message"></textarea>
+                           <textarea name="detail"  class="mb-0 text-sm"   placeholder="Enter Your Message"></textarea>
                           </div>
                         
                      <br>

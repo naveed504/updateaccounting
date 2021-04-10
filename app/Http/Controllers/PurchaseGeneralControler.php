@@ -84,7 +84,7 @@ class PurchaseGeneralControler extends Controller
         try{
             
 
-            $send=(new ContactusJob($request->all()))->delay(Carbon::now()->addMinutes(1));
+            $send=(new ContactusJob($request->all()))->delay(Carbon::now()->addSeconds(3));
             dispatch($send);
 
         }catch(\Exception $e){

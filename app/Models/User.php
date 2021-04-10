@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\ImageFavourite;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,6 +46,9 @@ class User extends Authenticatable
     public function purchaseitem()
     {
         return $this->belongsTo(purchaseitem::class);
+    }
+    public function imageFavourites(){
+        return $this->hasMany(ImageFavourite::class);
     }
 
 }
