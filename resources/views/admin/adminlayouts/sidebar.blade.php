@@ -76,7 +76,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
+            <a class="nav-link" href="oneTOone">
                 <i class="ni ni-palette"></i>
                 <span class="nav-link-text">Foundation</span>
               </a>

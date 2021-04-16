@@ -18,4 +18,5 @@ class GeneralController extends Controller
     {
         return view('register.login');
     }
+  
 }

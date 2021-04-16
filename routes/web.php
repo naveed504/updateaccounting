@@ -35,6 +35,8 @@ Route::post('send-contact-from',[PurchaseGeneralControler::class, 'sendMain'])->
 Route::get('eventpost',[EventListenerPOstCon::class, 'index']);
 Route::post('storepost',[EventListenerPOstCon::class, 'store'])->name('storepost');
 
+
+
 });
 
 Route::get('img-fav-view',[FavouriteImagesController::class,'imgview']);
