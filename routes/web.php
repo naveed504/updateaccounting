@@ -7,7 +7,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseGeneralControler;
 use App\Http\Controllers\FavouriteImagesController;
 use App\Http\Controllers\EventListenerPOstCon;
-
+use App\Http\Controllers\MultiLanguageCon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +34,9 @@ Route::get('create_jobs',[PurchaseGeneralControler::class, 'createForm'])->name(
 Route::post('send-contact-from',[PurchaseGeneralControler::class, 'sendMain'])->name('send');
 Route::get('eventpost',[EventListenerPOstCon::class, 'index']);
 Route::post('storepost',[EventListenerPOstCon::class, 'store'])->name('storepost');
+
+Route::get('multilanguage',[MultiLanguageCon::class,'index'])->name('multilanguage');
+Route::get('change/lang',[MultiLanguageCon::class,'lang_change'])->name('LangChange');
 
 
 

@@ -33,7 +33,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('maindealer.index')}}">
                 <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Main Dealers</span>
+                <span class="nav-link-text">{{__()</span>
               </a>
             </li>
             <li class="nav-item">
@@ -60,6 +60,18 @@
                 <span class="nav-link-text">Image Favourites</span>
               </a>
             </li>
+
+            <div class="dropdown" >
+    <div class=" dropdown-toggle" data-toggle="dropdown">
+    <i class="ni ni-collection text-info" style="margin-left:25px;"></i>  
+    </div>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Urdu</a>
+      <a class="dropdown-item" href="#">Turkish</a>
+      <a class="dropdown-item" href="#">English</a>
+     
+     
+  </div>
           </ul>
           <!-- Divider -->
           <hr class="my-3">
@@ -69,16 +81,12 @@
           </h6>
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
+           
+            
             <li class="nav-item">
             <a class="nav-link" href="eventpost">
                 <i class="ni ni-spaceship"></i>
                 <span class="nav-link-text">Event Listener</span>
-              </a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="oneTOone">
-                <i class="ni ni-palette"></i>
-                <span class="nav-link-text">Foundation</span>
               </a>
             </li>
             <li class="nav-item">
