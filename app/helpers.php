@@ -8,3 +8,5 @@
       return $price_new_text;
 
   }
+
+dsfsd
